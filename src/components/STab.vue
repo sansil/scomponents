@@ -16,6 +16,15 @@ export default {
       this.$scopedSlots.default({}) // arreglo de hijos
     );
   },
+  props: {
+    isSelected: {
+      type: Boolean,
+      default: false,
+    },
+    name: {
+      type: String,
+    },
+  },
   data() {
     return {
       id: "",
@@ -23,11 +32,13 @@ export default {
   },
   created() {
     this.id = this.generateId();
+    this.$emit("test", { jaj: "ada" });
   },
   methods: {
     onClick() {
       this.$emit("tabselect", this.id);
       console.log("click");
+      console.log(this.isSelected);
     },
     generateId() {
       return `s-tab-id-${++id}`;
