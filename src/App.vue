@@ -1,20 +1,25 @@
 <template>
   <div id="app" class="bg-gray-500 min-h-screen">
-    <STabs>
-      <STab>sansil</STab>
-      <STab>sansile</STab>
-    </STabs>
+    <STabList>
+      <STabs>
+        <STab>sansil</STab>
+        <STab>sansile</STab>
+      </STabs>
+    </STabList>
   </div>
 </template>
 
 <script>
 import STabs from "@/components/STabs.vue";
 import STab from "@/components/STab.vue";
+import STabList from "@/components/STabList.vue";
+
 export default {
   name: "App",
   components: {
     STabs,
     STab,
+    STabList,
   },
 };
 </script>

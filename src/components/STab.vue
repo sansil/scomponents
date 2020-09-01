@@ -38,7 +38,7 @@ export default {
     onClick() {
       this.$emit("tabselect", this.id);
       console.log("click");
-      console.log(this.isSelected);
+      console.log("is selected?", this.isSelected);
     },
     generateId() {
       return `s-tab-id-${++id}`;
