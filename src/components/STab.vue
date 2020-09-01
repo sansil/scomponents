@@ -2,24 +2,39 @@
 <script>
 let id = 0;
 export default {
-  render(createElement) {
-    // var self = this;
-    return createElement(
-      "a",
-      {
-        ref: "s-tab",
-        on: {
-          click: this.onClick,
-        },
-      },
-
-      this.$scopedSlots.default({}) // arreglo de hijos
-    );
+  render() {
+    return this.$scopedSlots.default({
+      isSelected: this.isSelected,
+      toTrue: this.toTrue,
+      isTrue: this.isTrue,
+    });
   },
+  // render(createElement) {
+  //   // var self = this;
+  //   return createElement(
+  //     "a",
+  //     {
+  //       ref: "s-tab",
+  //       attrs: {},
+
+  //       on: {
+  //         click: this.onClick,
+  //       },
+  //     },
+
+  //     this.$scopedSlots.default({
+  //       isSelected: this.isSelected,
+  //       toTrue: this.toTrue,
+  //       isTrue: this.isTrue,
+  //     })
+
+  //     // arreglo de hijos
+  //   );
+  // },
   props: {
     isSelected: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     name: {
       type: String,
@@ -27,21 +42,29 @@ export default {
   },
   data() {
     return {
-      id: "",
+      isSansil: false,
     };
   },
   created() {
     this.id = this.generateId();
     this.$emit("test", { jaj: "ada" });
   },
+  computed: {
+    toTrue() {
+      return true;
+    },
+  },
   methods: {
     onClick() {
       this.$emit("tabselect", this.id);
-      console.log("click");
+      this.isSansil = !this.isSansil;
       console.log("is selected?", this.isSelected);
     },
     generateId() {
       return `s-tab-id-${++id}`;
+    },
+    isTrue() {
+      return !this.isSansil;
     },
   },
 };
