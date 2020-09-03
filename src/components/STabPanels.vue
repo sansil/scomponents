@@ -57,7 +57,6 @@ export default {
   inject: ["$TabContext"],
   render(createElement) {
     const vnodes = this.$scopedSlots.default({});
-    console.log("clonando...");
     const clones = vnodes.map((vnode, index) => {
       const isSelected = index === this.context.selectedIndex;
       const clone = cloneVNodeElement(
@@ -73,15 +72,8 @@ export default {
     });
     return createElement("div", {}, clones);
   },
-  async mounted() {
-    console.log("mounted");
-    await this.$nextTick();
-    //this.miselected = false;
-    //console.log("childs", this.$children[0]);
-  },
   data() {
     return {
-      miselected: true,
       selectedIndex: 0,
     };
   },

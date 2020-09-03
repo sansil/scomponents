@@ -56,13 +56,12 @@ export function cloneVNodeElement(
 export default {
   inject: ["$TabContext"],
   render(createElement) {
-    const validVndoes = cleanChildren(this.$slots.default);
-    //const vnodes = this.$scopedSlots.default({});
-    console.log("clonando...");
-    const clones = validVndoes.map((vnode, index) => {
+    const validVnodes = cleanChildren(this.$slots.default);
+    //console.log("clonando...");
+    const clones = validVnodes.map((vnode, index) => {
       const isSelected = index === this.context.selectedIndex;
       const { onChangeTab } = this.context;
-      const handleClicks = (event) => {
+      const handleClick = (event) => {
         onChangeTab(index);
         this.$emit("click", event);
       };
@@ -73,14 +72,13 @@ export default {
             isSelected, //: this.miselected,
           },
           nativeOn: {
-            click: handleClicks,
+            click: handleClick,
           },
         },
         createElement
       );
       return clone;
     });
-
     return createElement(
       "div",
       { attrs: { role: "tablist", tabIndex: -1 } },
@@ -90,20 +88,12 @@ export default {
 
   data() {
     return {
-      miselected: true,
       selectedIndex: 0,
     };
   },
   computed: {
     context() {
       return this.$TabContext();
-    },
-  },
-  methods: {
-    handleClick() {
-      console.log("wtf");
-      // this.miselected = !this.miselected;
-      // this.onChangeTab(index);
     },
   },
 };

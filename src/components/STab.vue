@@ -36,35 +36,13 @@ export default {
       type: Boolean,
       default: true,
     },
-    name: {
-      type: String,
-    },
-  },
-  data() {
-    return {
-      isSansil: false,
-    };
   },
   created() {
     this.id = this.generateId();
-    this.$emit("test", { jaj: "ada" });
-  },
-  computed: {
-    toTrue() {
-      return true;
-    },
   },
   methods: {
-    onClick() {
-      this.$emit("tabselect", this.id);
-      this.isSansil = !this.isSansil;
-      console.log("is selected?", this.isSelected);
-    },
     generateId() {
       return `s-tab-id-${++id}`;
-    },
-    isTrue() {
-      return !this.isSansil;
     },
   },
 };

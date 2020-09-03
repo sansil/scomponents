@@ -2,7 +2,6 @@
 let id = 0;
 export default {
   render(createElement) {
-    // var self = this;
     return createElement(
       "div",
       {
@@ -13,7 +12,6 @@ export default {
         },
       },
       this.$scopedSlots.default({ isSelected: this.isSelected })
-      // arreglo de hijos
     );
   },
   props: {
@@ -24,11 +22,9 @@ export default {
       type: String,
     },
   },
-
   created() {
     this.id = this.generateId();
   },
-
   methods: {
     generateId() {
       return `s-tab-id-${++id}`;
