@@ -81,14 +81,13 @@ export default {
       return clone;
     });
 
-    return createElement("div", {}, clones);
+    return createElement(
+      "div",
+      { attrs: { role: "tablist", tabIndex: -1 } },
+      clones
+    );
   },
-  async mounted() {
-    console.log("mounted");
-    await this.$nextTick();
-    //this.miselected = false;
-    //console.log("childs", this.$children[0]);
-  },
+
   data() {
     return {
       miselected: true,

@@ -1,34 +1,50 @@
 <template>
   <div id="app" class="bg-gray-200 min-h-screen">
-    <STabs>
+    <STabs :defaultSelectedTab="1">
       <!-- nav -->
       <div class="border-b border-gray-200">
-        <STabsNav class="-mb-px flex">
+        <STabList class="-mb-px flex">
           <STab v-slot="{isSelected}">
             <a
               href="#caca2"
-              :class="[isSelected?'whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-indigo-500 font-medium text-sm leading-5 text-indigo-600 focus:outline-none focus:text-indigo-800 focus:border-indigo-700':'whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300']"
+              :class="[isSelected?'transition duration-300 transform  ease-in-out whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-indigo-500 font-medium text-sm leading-5 text-indigo-600 focus:outline-none focus:text-indigo-800 focus:border-indigo-700':'transition duration-300 transform  ease-in-out whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300']"
             >Tab 1</a>
           </STab>
           <STab v-slot="{isSelected}">
             <a
               href="#caca"
-              :class="[isSelected?'whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-indigo-500 font-medium text-sm leading-5 text-indigo-600 focus:outline-none focus:text-indigo-800 focus:border-indigo-700':'whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300']"
+              :class="[isSelected?'transition duration-300 transform  ease-in-out whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-indigo-500 font-medium text-sm leading-5 text-indigo-600 focus:outline-none focus:text-indigo-800 focus:border-indigo-700':'transition duration-300 transform  ease-in-out whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300']"
             >Tab 2</a>
           </STab>
-        </STabsNav>
+        </STabList>
       </div>
       <!-- Panels -->
-      <STabPanels>
-        <STabPanel>Tab 1</STabPanel>
-        <STabPanel>Tab 2</STabPanel>
+
+      <STabPanels class="px-4 mt-4">
+        <STabPanel v-slot="{isSelected}">
+          <transition
+            enter-active-class="duration-300 ease-out"
+            enter-class="opacity-0"
+            enter-to-class="opacity-100"
+            leave-active-class="duration-200 ease-in"
+            leave-class="opacity-100"
+            leave-to-class="opacity-0"
+          >
+            <div v-show="isSelected">tab 1</div>
+          </transition>
+        </STabPanel>
+
+        <STabPanel>
+          <div>hola</div>
+          <nav>asdsad</nav>
+        </STabPanel>
       </STabPanels>
     </STabs>
   </div>
 </template>
 
 <script>
-import STabsNav from "@/components/STabsNav.vue";
+import STabList from "@/components/STabList.vue";
 import STab from "@/components/STab.vue";
 import STabs from "@/components/STabs.vue";
 import STabPanel from "@/components/STabPanel.vue";
@@ -37,7 +53,7 @@ import STabPanels from "@/components/STabPanels.vue";
 export default {
   name: "App",
   components: {
-    STabsNav,
+    STabList,
     STab,
     STabs,
     STabPanel,

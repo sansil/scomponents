@@ -2,7 +2,13 @@
 
 <script>
 export default {
-  name: "STabList",
+  name: "STabs",
+  props: {
+    defaultSelectedTab: {
+      type: Number,
+      default: 0,
+    },
+  },
   provide() {
     return {
       $TabContext: () => this.TabContext,
@@ -16,7 +22,7 @@ export default {
   },
   data() {
     return {
-      selectedIndex: 0,
+      selectedIndex: this.defaultSelectedTab,
     };
   },
   computed: {

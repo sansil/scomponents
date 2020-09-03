@@ -8,6 +8,8 @@ export default {
       {
         attrs: {
           hidden: !this.isSelected,
+          role: "tabpanel",
+          tabIndex: -1,
         },
       },
       this.$scopedSlots.default({ isSelected: this.isSelected })
