@@ -14,6 +14,7 @@
 
 <script>
 export default {
+  name: "SButton",
   props: {
     kind: {
       type: String,
