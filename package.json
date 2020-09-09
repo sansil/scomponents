@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "tailwindcss": "^1.7.6",
     "vnotifications": "link:../vnotifications",
+    "vt-notifications": "^0.1.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {

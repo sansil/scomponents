@@ -9923,6 +9923,11 @@ vm-browserify@^1.0.1:
   version "0.0.0"
   uid ""
 
+vt-notifications@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/vt-notifications/-/vt-notifications-0.1.1.tgz#be5f6756f1b366f219a955fac8a1f13da8a85c02"
+  integrity sha512-VKUMtczNm3IZU/Wgn7pTbMig1QmZGdUP6o31uRyeW2YhcpnwQ6HKHN0m3L32pF+o7wqmunbYfamZstEFAfitVg==
+
 vue-eslint-parser@^7.0.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-7.1.0.tgz#9cdbcc823e656b087507a1911732b867ac101e83"

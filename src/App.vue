@@ -53,7 +53,7 @@
       grup="info"
     >
       <div class="max-w-sm w-full">
-        <VNotification v-slot="{notifications, close}">
+        <notification v-slot="{notifications, close}">
           <div v-for="notification in notifications" :key="notification.id">
             <div class="bg-white shadow-lg rounded-lg pointer-events-auto mt-4">
               <div class="rounded-lg shadow-xs overflow-hidden">
@@ -86,17 +86,17 @@
               </div>
             </div>
           </div>
-        </VNotification>
+        </notification>
       </div>
     </div>
     <!-- seguna noti -->
-    <VNotificationGroup group="warn">
+    <notificationGroup group="warn">
       <div
         class="fixed inset-0 flex items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-start"
         grup="info"
       >
         <div class="max-w-sm w-full">
-          <VNotification v-slot="{notifications, close}" group="warn">
+          <notification v-slot="{notifications, close}" group="warn">
             <div v-for="notification in notifications" :key="notification.id">
               <div
                 class="bg-white shadow-lg rounded-lg pointer-events-auto mt-4"
@@ -162,10 +162,10 @@
                 </div>
               </div>
             </div>
-          </VNotification>
+          </notification>
         </div>
       </div>
-    </VNotificationGroup>
+    </notificationGroup>
   </div>
 </template>
 
