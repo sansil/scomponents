@@ -49,62 +49,123 @@
     <SButton kind="primary" as="a" href="#" @click="onClick">apretame</SButton>
     <SButton kind="secondary" @click="addNoti">apretame2</SButton>
     <div
-      ref="container"
       class="fixed inset-0 flex items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-end"
+      grup="info"
     >
       <div class="max-w-sm w-full">
-        <SNotification v-slot="{notifications, close}">
-          <!-- <transition-group
-          appear
-          tag="div"
-          enter-active-class="transform ease-out duration-300 transition"
-          enter-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
-          enter-to-class="translate-y-0 opacity-100 sm:translate-x-0"
-          leave-active-class="transition ease-in duration-500"
-          leave-class="opacity-100"
-          leave-to-class="opacity-0"
-          move-class="transition duration-500"
-          class="max-w-sm w-full"
-          >-->
-          <div
-            id="sansil"
-            class="bg-white shadow-lg rounded-lg pointer-events-auto mt-4"
-            v-for="notification in notifications"
-            :key="notification.id"
-          >
-            <div class="rounded-lg shadow-xs overflow-hidden">
-              <div class="p-4">
-                <div class="flex items-center">
-                  <div class="w-0 flex-1 flex justify-between">
-                    <p
-                      class="w-0 flex-1 text-sm leading-5 font-medium text-gray-900"
-                    >{{notification.id}} Discussion archived</p>
-                    <button
-                      class="ml-3 flex-shrink-0 text-sm leading-5 font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
-                    >Undo</button>
-                  </div>
-                  <div class="ml-4 flex-shrink-0 flex">
-                    <button
-                      @click="close(notification.id)"
-                      class="inline-flex text-gray-400 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150"
-                    >
-                      <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path
-                          fill-rule="evenodd"
-                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </button>
+        <VNotification v-slot="{notifications, close}">
+          <div v-for="notification in notifications" :key="notification.id">
+            <div class="bg-white shadow-lg rounded-lg pointer-events-auto mt-4">
+              <div class="rounded-lg shadow-xs overflow-hidden">
+                <div class="p-4">
+                  <div class="flex items-center">
+                    <div class="w-0 flex-1 flex justify-between">
+                      <p
+                        class="w-0 flex-1 text-sm leading-5 font-medium text-gray-900"
+                      >{{notification.title}} {{notification.text}}</p>
+                      <button
+                        class="ml-3 flex-shrink-0 text-sm leading-5 font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+                      >Undo</button>
+                    </div>
+                    <div class="ml-4 flex-shrink-0 flex">
+                      <button
+                        @click="close(notification.id)"
+                        class="inline-flex text-gray-400 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150"
+                      >
+                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                          <path
+                            fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- </transition-group> -->
-        </SNotification>
+        </VNotification>
       </div>
     </div>
+    <!-- seguna noti -->
+    <VNotificationGroup group="warn">
+      <div
+        class="fixed inset-0 flex items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-start"
+        grup="info"
+      >
+        <div class="max-w-sm w-full">
+          <VNotification v-slot="{notifications, close}" group="warn">
+            <div v-for="notification in notifications" :key="notification.id">
+              <div
+                class="bg-white shadow-lg rounded-lg pointer-events-auto mt-4"
+                v-if="notification.group==='info'"
+              >
+                <div class="rounded-lg shadow-xs overflow-hidden">
+                  <div class="p-4">
+                    <div class="flex items-center">
+                      <div class="w-0 flex-1 flex justify-between">
+                        <p
+                          class="w-0 flex-1 text-sm leading-5 font-medium text-gray-900"
+                        >{{notification.title}} {{notification.text}}</p>
+                        <button
+                          class="ml-3 flex-shrink-0 text-sm leading-5 font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+                        >Undo</button>
+                      </div>
+                      <div class="ml-4 flex-shrink-0 flex">
+                        <button
+                          @click="close(notification.id)"
+                          class="inline-flex text-gray-400 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150"
+                        >
+                          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                              fill-rule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white shadow-lg rounded-lg pointer-events-auto mt-4" v-else>
+                <div class="rounded-lg shadow-xs overflow-hidden">
+                  <div class="p-4">
+                    <div class="flex items-center">
+                      <div class="w-0 flex-1 flex justify-between">
+                        <p
+                          class="w-0 flex-1 text-sm leading-5 font-medium text-gray-900"
+                        >{{notification.title}} {{notification.text}}</p>
+                        <button
+                          class="ml-3 flex-shrink-0 text-sm leading-5 font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+                        >Undo</button>
+                      </div>
+                      <div class="ml-4 flex-shrink-0 flex">
+                        <button
+                          @click="close(notification.id)"
+                          class="inline-flex text-gray-400 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150"
+                        >
+                          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                              fill-rule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </VNotification>
+        </div>
+      </div>
+    </VNotificationGroup>
   </div>
 </template>
 
@@ -115,8 +176,9 @@ import STabs from "@/components/STabs.vue";
 import STabPanel from "@/components/STabPanel.vue";
 import STabPanels from "@/components/STabPanels.vue";
 import SButton from "@/components/SButton.vue";
-import SNotification from "@/components/SNotification.vue";
-import Vue from "vue";
+//import SNotification from "@/components/SNotification.vue";
+//import SNotificationGroup from "@/components/SNotificationGroup.vue";
+//import Vue from "vue";
 export default {
   name: "App",
   components: {
@@ -126,7 +188,8 @@ export default {
     STabPanel,
     STabPanels,
     SButton,
-    SNotification,
+    //SNotification,
+    // SNotificationGroup,
   },
   data() {
     return {
@@ -135,22 +198,26 @@ export default {
   },
   methods: {
     addNoti() {
-      this.$sansil.increment({ title: "title 1", id: 400 });
+      this.$notify({ title: "title 1", text: "text 1", group: "warn" }, 2000);
     },
     onClick() {
-      const ComponentClass = Vue.extend(SButton);
-      const instance = new ComponentClass({
-        // el: document
-        //   .getElementById("sansil")
-        //   .appendChild(document.createElement("div")),
-        // propsData: { type: "primary" },
+      this.$notify({
+        title: "title 1",
+        text: "text 2",
       });
-      instance.$slots.default = `buton`;
-      instance.$mount(); // pass nothing
-      //         console.log(this.$refs)
-      this.$refs.container.appendChild(instance.$el);
-      //this.$sansil.show({});
-      this.testShow = false;
+      // const ComponentClass = Vue.extend(SButton);
+      // const instance = new ComponentClass({
+      //   // el: document
+      //   //   .getElementById("sansil")
+      //   //   .appendChild(document.createElement("div")),
+      //   // propsData: { type: "primary" },
+      // });
+      // instance.$slots.default = `buton`;
+      // instance.$mount(); // pass nothing
+      // //         console.log(this.$refs)
+      // this.$refs.container.appendChild(instance.$el);
+      // //this.$sansil.show({});
+      // this.testShow = false;
     },
   },
 };
