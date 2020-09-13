@@ -3,7 +3,7 @@ import App from './App.vue'
 import '@/assets/css/tailwind.css'
 //import SNotification from "@/components/SNotification.vue";
 //import { methods } from "@/components/notifications.js"
-import VNotifications from "vnotifications"
+import Notifications from "vt-notifications"
 
 // const MyPlugin = {
 //   install(VueInstance) {
@@ -17,7 +17,7 @@ import VNotifications from "vnotifications"
 //   }
 // };
 //Vue.use(MyPlugin)
-Vue.use(VNotifications)
+Vue.use(Notifications)
 
 
 Vue.config.productionTip = false
