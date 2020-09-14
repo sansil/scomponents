@@ -175,14 +175,13 @@
       </div>
     </notificationGroup>
     <SPagination
-      v-slot="{start,end,totalItems,nextPage,prevPage,totalPages,pages,onSelectPage,isEllipsis,isActivePage}"
+      v-slot="{start,end,totalItems,nextPage,prevPage,pages,onSelectPage,isEllipsis,isActivePage}"
       :totalItems="121"
       :maxVisiblePages="4"
     >
       <div
         class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6"
       >
-        {{totalPages}}
         <div class="flex-1 flex justify-between sm:hidden">
           <a
             href="#"

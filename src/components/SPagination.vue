@@ -7,7 +7,7 @@ export default {
       type: Number,
       default: 1,
       validator: (page) => {
-        return page >= 0;
+        return page > 0;
       },
     },
     itemsPerPage: {
@@ -63,9 +63,6 @@ export default {
       return this.totalItems <= end ? this.totalItems : end;
     },
     totalPages() {
-      if (this.itemsPerPage === 0) {
-        return 0;
-      }
       return Math.ceil(this.totalItems / this.itemsPerPage) - 1;
     },
     pages() {
