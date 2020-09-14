@@ -79,11 +79,7 @@ export default {
       );
       return clone;
     });
-    return createElement(
-      "div",
-      { attrs: { role: "tablist", tabIndex: -1 } },
-      clones
-    );
+    return createElement("div", { attrs: { role: "tablist" } }, clones);
   },
 
   data() {

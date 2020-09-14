@@ -174,10 +174,12 @@
         </div>
       </div>
     </notificationGroup>
+    {{data}}
     <SPagination
-      v-slot="{start,end,totalItems,nextPage,prevPage,pages,onSelectPage,isEllipsis,isActivePage}"
+      v-slot="{start,end,totalItems,nextPage,prevPage,pages,isActivePage,isEllipsis,}"
       :totalItems="121"
       :maxVisiblePages="4"
+      @change-page="onNewPage"
     >
       <div
         class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6"
@@ -224,14 +226,21 @@
                 v-show="isEllipsis.start"
                 class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700"
               >...</span>
-              <a
+              <!-- <a
                 v-for="page in pages"
                 :key="page"
                 href="#"
                 @click="onSelectPage(page)"
                 :class="isActivePage(page)?'bg-gray-100 text-gray-700 transition ease-in-out duration-150':''"
                 class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
-              >{{page}}</a>
+              >{{page}}</a>-->
+              <SPage
+                v-for="page in pages"
+                :key="page"
+                :page="page"
+                :class="isActivePage(page)?'bg-gray-100 text-gray-700 transition ease-in-out duration-150':''"
+                class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
+              >{{page}}</SPage>
               <span
                 v-show="isEllipsis.end"
                 class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700"
@@ -266,7 +275,9 @@ import STabs from "@/components/STabs.vue";
 import STabPanel from "@/components/STabPanel.vue";
 import STabPanels from "@/components/STabPanels.vue";
 import SButton from "@/components/SButton.vue";
+import SPage from "@/components/SPage.vue";
 import SPagination from "@/components/SPagination.vue";
+import axios from "axios";
 //import SNotification from "@/components/SNotification.vue";
 //import SNotificationGroup from "@/components/SNotificationGroup.vue";
 //import Vue from "vue";
@@ -280,12 +291,14 @@ export default {
     STabPanels,
     SButton,
     SPagination,
+    SPage,
     //SNotification,
     // SNotificationGroup,
   },
   data() {
     return {
       testShow: true,
+      data: [],
     };
   },
   methods: {
@@ -298,20 +311,13 @@ export default {
         text: "text 2",
         type: "info",
       });
-
-      // const ComponentClass = Vue.extend(SButton);
-      // const instance = new ComponentClass({
-      //   // el: document
-      //   //   .getElementById("sansil")
-      //   //   .appendChild(document.createElement("div")),
-      //   // propsData: { type: "primary" },
-      // });
-      // instance.$slots.default = `buton`;
-      // instance.$mount(); // pass nothing
-      // //         console.log(this.$refs)
-      // this.$refs.container.appendChild(instance.$el);
-      // //this.$sansil.show({});
-      // this.testShow = false;
+    },
+    async onNewPage(p) {
+      console.log(p);
+      const res = await axios.get(
+        `https://aire.innova.antel.net.uy/api/data/search/866425030444154?start=1&page_current=${p}&page_size=5`
+      );
+      this.data = res.data;
     },
     demo() {
       this.$notify({

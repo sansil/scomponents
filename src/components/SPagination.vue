@@ -46,6 +46,11 @@ export default {
       isActivePage: this.isActivePage,
     });
   },
+  provide() {
+    return {
+      ["context"]: { onSelectPage: this.onSelectPage },
+    };
+  },
   data() {
     return {
       page: this.startPage,
@@ -95,22 +100,34 @@ export default {
       return array;
     },
     nextPage() {
-      this.page < this.totalPages ? (this.page = this.page + 1) : "";
+      if (this.page < this.totalPages) {
+        this.page = this.page + 1;
+        this.emitChange();
+      }
     },
     onSelectPage(p) {
       this.page = p;
+      this.emitChange();
     },
     prevPage() {
-      this.page > 1 ? (this.page = this.page - 1) : "";
+      if (this.page > 1) {
+        this.page = this.page - 1;
+        this.emitChange();
+      }
     },
     goToFirstPage() {
       this.page = 1;
+      this.emitChange();
     },
     goToLastPage() {
       this.page = this.totalPages;
+      this.emitChange();
     },
     isActivePage(page) {
       return page === this.page;
+    },
+    emitChange() {
+      this.$emit("change-page", this.page);
     },
   },
 };
