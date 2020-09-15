@@ -3,7 +3,7 @@
 <script>
 export default {
   inject: {
-    context: { default: { group: "" } },
+    context: {},
   },
   props: {
     as: {
@@ -14,13 +14,19 @@ export default {
       type: [String, Number],
       required: true,
     },
+    href: {
+      type: String,
+      default: "#",
+    },
   },
   render(createElement) {
     return createElement(
       this.as,
       {
         attrs: {
-          href: "#",
+          href: this.as === "a" ? this.href : null,
+          "aria-page-label": this.page,
+          "aria-current-label": this.context.isActivePage(this.page),
         },
         on: {
           click: this.onSelectPage,

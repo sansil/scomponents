@@ -179,6 +179,8 @@
       v-slot="{start,end,totalItems,nextPage,prevPage,pages,isActivePage,isEllipsis,}"
       :totalItems="121"
       :maxVisiblePages="4"
+      :itemsPerPage="5"
+      v-model="myPage"
       @change-page="onNewPage"
     >
       <div
@@ -299,13 +301,16 @@ export default {
     return {
       testShow: true,
       data: [],
+      myPage: 4,
     };
   },
   methods: {
     addNoti() {
       this.$notify({ title: "title 1", text: "text 1", group: "warn" }, 4000);
     },
+
     onClick() {
+      this.myPage = 10;
       this.$notify({
         title: "title 1",
         text: "text 2",
@@ -314,6 +319,7 @@ export default {
     },
     async onNewPage(p) {
       console.log(p);
+
       const res = await axios.get(
         `https://aire.innova.antel.net.uy/api/data/search/866425030444154?start=1&page_current=${p}&page_size=5`
       );

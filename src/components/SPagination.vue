@@ -10,6 +10,9 @@ export default {
         return page > 0;
       },
     },
+    value: {
+      type: Number,
+    },
     itemsPerPage: {
       type: Number,
       default: 10,
@@ -48,13 +51,26 @@ export default {
   },
   provide() {
     return {
-      ["context"]: { onSelectPage: this.onSelectPage },
+      ["context"]: {
+        onSelectPage: this.onSelectPage,
+        isActivePage: this.isActivePage,
+      },
     };
   },
   data() {
     return {
       page: this.startPage,
     };
+  },
+  watch: {
+    startPage: {
+      handler: "onSelectPage",
+      immediate: true,
+    },
+    value: {
+      handler: "onChangeValue",
+      immediate: true,
+    },
   },
   computed: {
     start() {
@@ -109,6 +125,10 @@ export default {
       this.page = p;
       this.emitChange();
     },
+    onChangeValue(p) {
+      this.page = p;
+      this.$emit("input", this.page);
+    },
     prevPage() {
       if (this.page > 1) {
         this.page = this.page - 1;
@@ -128,6 +148,7 @@ export default {
     },
     emitChange() {
       this.$emit("change-page", this.page);
+      this.$emit("input", this.page);
     },
   },
 };
