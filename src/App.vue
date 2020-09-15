@@ -176,7 +176,7 @@
     </notificationGroup>
     {{data}}
     <SPagination
-      v-slot="{start,end,totalItems,nextPage,prevPage,pages,isActivePage,isEllipsis,}"
+      v-slot="{start,end,totalItems,nextPage,prevPage,pages,isActivePage,isEllipsis}"
       :totalItems="121"
       :maxVisiblePages="4"
       :itemsPerPage="5"
@@ -267,6 +267,10 @@
         </div>
       </div>
     </SPagination>
+
+    <div class="max-w-lg w-full mx-auto bg-white rounded-lg mt-4">
+      <chart></chart>
+    </div>
   </div>
 </template>
 
@@ -280,6 +284,8 @@ import SButton from "@/components/SButton.vue";
 import SPage from "@/components/SPage.vue";
 import SPagination from "@/components/SPagination.vue";
 import axios from "axios";
+
+import Chart from "@/components/Chart.vue";
 //import SNotification from "@/components/SNotification.vue";
 //import SNotificationGroup from "@/components/SNotificationGroup.vue";
 //import Vue from "vue";
@@ -294,16 +300,21 @@ export default {
     SButton,
     SPagination,
     SPage,
+    Chart,
     //SNotification,
     // SNotificationGroup,
   },
   data() {
     return {
       testShow: true,
+
+      myPage: 1,
+      chart: null,
+      chartLine: null,
       data: [],
-      myPage: 4,
     };
   },
+  async mounted() {},
   methods: {
     addNoti() {
       this.$notify({ title: "title 1", text: "text 1", group: "warn" }, 4000);
@@ -332,6 +343,22 @@ export default {
         group: "foo",
         type: "info",
       });
+    },
+
+    generateDayWiseTimeSeries(baseval, count, yrange) {
+      let i = 0;
+      let series = [];
+      while (i < count) {
+        let x = baseval;
+        let y =
+          Math.floor(Math.random() * (yrange.max - yrange.min + 1)) +
+          yrange.min;
+
+        series.push([x, y]);
+        baseval += 86400000;
+        i++;
+      }
+      return series;
     },
   },
 };
