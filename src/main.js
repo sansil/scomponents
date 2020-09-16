@@ -18,7 +18,9 @@ import Notifications from "vt-notifications"
 // };
 //Vue.use(MyPlugin)
 Vue.use(Notifications)
+import Trend from "vuetrend"
 
+Vue.use(Trend)
 
 Vue.config.productionTip = false
 

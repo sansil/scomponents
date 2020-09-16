@@ -267,7 +267,14 @@
         </div>
       </div>
     </SPagination>
-
+    <div class="max-w-sm bg-white p-3 rounded-lg">
+      <trend
+        :data="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]"
+        :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
+        auto-draw
+        smooth
+      ></trend>
+    </div>
     <div class="max-w-lg w-full mx-auto bg-white rounded-lg mt-4">
       <chart></chart>
     </div>
@@ -343,22 +350,6 @@ export default {
         group: "foo",
         type: "info",
       });
-    },
-
-    generateDayWiseTimeSeries(baseval, count, yrange) {
-      let i = 0;
-      let series = [];
-      while (i < count) {
-        let x = baseval;
-        let y =
-          Math.floor(Math.random() * (yrange.max - yrange.min + 1)) +
-          yrange.min;
-
-        series.push([x, y]);
-        baseval += 86400000;
-        i++;
-      }
-      return series;
     },
   },
 };
