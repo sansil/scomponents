@@ -4,7 +4,7 @@
       :is="this.as"
       :type="this.as==='button'?this.type:null"
       :href="href"
-      :class="kindClasses"
+      :class="[kindClasses, sizeClasses]"
       v-on="$listeners"
     >
       <slot></slot>
@@ -38,15 +38,29 @@ export default {
         return ["button", "submit"].includes(value);
       },
     },
+    size: {
+      type: String,
+      default: "xs",
+      validator(value) {
+        return ["xs", "lg", "xl"].includes(value);
+      },
+    },
   },
   computed: {
     kindClasses() {
       return {
         primary:
-          "inline-flex items-center px-2 py-1.5 border border-transparent text-xs leading-4 font-medium rounded text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150",
+          "inline-flex items-center  border border-transparent  font-medium rounded text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150",
         secondary:
-          "inline-flex items-center px-2 py-1.5 border border-transparent text-xs leading-4 font-medium rounded text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700 transition ease-in-out duration-150",
+          "inline-flex items-center  border border-transparent  font-medium rounded text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700 transition ease-in-out duration-150",
       }[this.kind];
+    },
+    sizeClasses() {
+      return {
+        xs: "text-xs leading-4 px-2 py-1",
+        lg: "px-4 py-2 text-sm leading-5",
+        xl: "",
+      }[this.size];
     },
   },
 };
