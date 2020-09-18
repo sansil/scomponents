@@ -278,7 +278,48 @@
     <div class="max-w-lg w-full mx-auto bg-white rounded-lg mt-4">
       <chart></chart>
     </div>
-    <SLightbox></SLightbox>
+    <SLightbox>adasdsad</SLightbox>
+    <div class="max-h-screen max-w-4xl grid grid-rows-6 grid-cols-10 gap-4 overflow-hidden">
+      <div class="row-span-4 col-span-10">
+        <!-- <img
+            class="w-full"
+            src="https://kitiot.antel.com.uy/kit-iot/Node_Diagram.png"
+            alt="images tes"
+        />-->
+        <img class="w-full object-cover" src="https://wallpaperaccess.com/full/969759.jpg" alt />
+      </div>
+      <!-- images footer -->
+      <div class="overflow-auto row-span-2 col-span-10">
+        <div class="inline-block">
+          <div class="space-x-2 flex justify-start">
+            <div class="flex-1 flex-shrink-0 w-40" v-for="(img,i) in [1,2,3,]" :key="i">
+              <img
+                class="object-cover w-40"
+                src="https://kitiot.antel.com.uy/kit-iot/Node_Diagram.png"
+                alt
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="space-x-2 flex flex-row">
+          <div
+            class="flex-1 flex-shrink-0 w-40"
+            v-for="(img,i) in [1,2,3,4,5,6,7,8,9,10,11,12,13,14]"
+            :key="i"
+          >
+            <img
+              class="object-cover w-40"
+              src="https://kitiot.antel.com.uy/kit-iot/Node_Diagram.png"
+              alt
+            />
+          </div>
+        </div>
+      </div>
+    </div>-->
     <svg class="svg-shape" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366.3 106.742">
       <path
         fill="currentColor"

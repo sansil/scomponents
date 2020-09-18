@@ -1,7 +1,7 @@
 <template>
   <transition leave-active-class="duration-300">
     <div
-      class="fixed inset-x-0 bottom-0 z-20 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
+      class="fixed inset-x-0 bottom-0 z-20 px-4 pb-4 sm:inset-0 sm:flex sm:justify-center"
       v-show="show"
     >
       <!--
@@ -23,7 +23,7 @@
         leave-to-class="opacity-0"
       >
         <div class="fixed inset-0 transition-opacity" v-show="show">
-          <div class="absolute inset-0 opacity-75 bg-sangray-500"></div>
+          <div class="absolute inset-0 opacity-75 bg-gray-900"></div>
         </div>
       </transition>
 
@@ -47,7 +47,7 @@
       >
         <div
           v-show="show"
-          class="relative px-4 pt-8 pb-4 overflow-hidden transition-all transform rounded-lg sm:max-w-lg sm:w-full sm:p-9"
+          class="relative px-4 pt-8 pb-4 overflow-hidden transition-all transform rounded-lg sm:p-9"
         >
           <span class="absolute top-0 right-0" @click="$emit('close')">
             <svg
