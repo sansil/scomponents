@@ -11,9 +11,9 @@
   "dependencies": {
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
-    "tailwindcss": "^1.7.6",
-    "vnotifications": "link:../vnotifications",
-    "vt-notifications": "^0.1.1",
+    "tailwindcss": "^1.8.10",
+    "vt-notifications": "link:../vnotifications",
+    "vt-pagination": "link:../vtpagination",
     "vue": "^2.6.11",
     "vue-apexcharts": "^1.6.0",
     "vuetrend": "^0.3.4"

@@ -1,9 +1,6 @@
 <template>
   <transition leave-active-class="duration-300">
-    <div
-      class="fixed inset-x-0 bottom-0 z-20 px-4 pb-4 sm:inset-0 sm:flex sm:justify-center"
-      v-show="show"
-    >
+    <div class="fixed inset-0 bottom-0 z-20 flex justify-center px-2 pb-4" v-show="show">
       <!--
     Background overlay, show/hide based on modal state.
 
@@ -23,7 +20,7 @@
         leave-to-class="opacity-0"
       >
         <div class="fixed inset-0 transition-opacity" v-show="show">
-          <div class="absolute inset-0 opacity-75 bg-gray-900"></div>
+          <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
         </div>
       </transition>
 
@@ -47,7 +44,7 @@
       >
         <div
           v-show="show"
-          class="relative px-4 pt-8 pb-4 overflow-hidden transition-all transform rounded-lg sm:p-9"
+          class="flex justify-center w-full px-6 pt-4 pb-4 overflow-hidden transition-all transform rounded-lg sm:pt-8 sm:p-9"
         >
           <span class="absolute top-0 right-0" @click="$emit('close')">
             <svg
