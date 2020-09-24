@@ -30,11 +30,9 @@
 </template>
 
 <script>
-// import SGaleryBox from "@/components/SGaleryBox.vue";
 import SGalery from "@/components/SGalery.vue";
 export default {
   components: {
-    // SGaleryBox,
     SGalery,
   },
   props: {
@@ -46,9 +44,10 @@ export default {
       type: Boolean,
       default: true,
     },
-    cardsArray: {
-      type: Array,
-      default: () => [
+  },
+  data() {
+    return {
+      cardsArray: [
         { src: "https://wallpaperaccess.com/full/969759.jpg" },
         {
           src:
@@ -66,76 +65,7 @@ export default {
         { src: "https://kitiot.antel.com.uy/kit-iot/Node_Diagram.png" },
         { src: "https://i.loli.net/2018/11/10/5be6852dec46e.jpeg" },
       ],
-    },
-  },
-  data() {
-    return {
-      cardIndex: 0,
-      cardXPos: 0,
     };
-  },
-  computed: {
-    maxCardsWidth() {
-      return this.cardsArray.length * this.cardWidth;
-    },
-    centerPos() {
-      return (
-        Math.floor(this.galleryWidth / (this.cardWidth * 2)) * this.cardWidth
-      );
-    },
-    currCardWidth() {
-      return this.cardIndex * this.cardWidth;
-    },
-    galleryWidth() {
-      this.$nextTick(function () {
-        console.log(this.$refs);
-      });
-      console.log(this.$refs);
-      return this.$refs.SGalery.clientWidth;
-    },
-  },
-  methods: {
-    // prev() {
-    //   if (this.cardIndex > 0) {
-    //     this.cardIndex--;
-    //   } else {
-    //     if (this.repeatCircular) this.cardIndex = this.cardsArray.length - 1;
-    //   }
-    //   this.updateCard();
-    // },
-    // next() {
-    //   if (this.cardIndex < this.cardsArray.length - 1) {
-    //     this.cardIndex++;
-    //   } else {
-    //     if (this.repeatCircular) this.cardIndex = 0;
-    //   }
-    //   this.updateCard();
-    // },
-    onClickThumb(index) {
-      this.cardIndex = index;
-      this.updateCard();
-    },
-    updateCard() {
-      // Prevent scrolling of images if not needed
-      if (this.maxCardsWidth < this.galleryWidth) {
-        return;
-      }
-      if (this.currCardWidth <= this.centerPos) {
-        this.cardXPos = 0;
-      } else if (
-        this.currCardWidth >=
-        this.cardsArray.length * this.cardWidth -
-          this.galleryWidth +
-          this.centerPos
-      ) {
-        this.cardXPos = -(
-          this.cardsArray.length * this.cardWidth -
-          this.galleryWidth
-        );
-      } else {
-        this.cardXPos = -(this.cardIndex * this.cardWidth) + this.centerPos;
-      }
-    },
   },
 };
 </script>
