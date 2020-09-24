@@ -1,9 +1,9 @@
 <template>
-  <div id="app" class="bg-gray-200 min-h-screen">
+  <div id="app" class="min-h-screen bg-gray-200">
     <STabs :defaultSelectedTab="1">
       <!-- nav -->
       <div class="border-b border-gray-200">
-        <STabList class="-mb-px flex">
+        <STabList class="flex -mb-px">
           <STab v-slot="{isSelected}">
             <a
               :tabindex="isSelected?'1':'0'"
@@ -54,27 +54,27 @@
       class="fixed inset-0 flex items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-end"
       grup="info"
     >
-      <div class="max-w-sm w-full">
+      <div class="w-full max-w-sm">
         <notification v-slot="{notifications, close}">
           <div v-for="notification in notifications" :key="notification.id">
-            <div class="bg-white shadow-lg rounded-lg pointer-events-auto mt-4">
-              <div class="rounded-lg shadow-xs overflow-hidden">
+            <div class="mt-4 bg-white rounded-lg shadow-lg pointer-events-auto">
+              <div class="overflow-hidden rounded-lg shadow-xs">
                 <div class="p-4">
                   <div class="flex items-center">
-                    <div class="w-0 flex-1 flex justify-between">
+                    <div class="flex justify-between flex-1 w-0">
                       <p
-                        class="w-0 flex-1 text-sm leading-5 font-medium text-gray-900"
+                        class="flex-1 w-0 text-sm font-medium leading-5 text-gray-900"
                       >{{notification.title}} {{notification.text}}</p>
                       <button
-                        class="ml-3 flex-shrink-0 text-sm leading-5 font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+                        class="flex-shrink-0 ml-3 text-sm font-medium leading-5 text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline"
                       >Undo</button>
                     </div>
-                    <div class="ml-4 flex-shrink-0 flex">
+                    <div class="flex flex-shrink-0 ml-4">
                       <button
                         @click="close(notification.id)"
-                        class="inline-flex text-gray-400 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150"
+                        class="inline-flex text-gray-400 transition duration-150 ease-in-out focus:outline-none focus:text-gray-500"
                       >
-                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                           <path
                             fill-rule="evenodd"
                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -97,7 +97,7 @@
         <div
           v-for="notification in notifications"
           :key="notification.id"
-          class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4"
+          class="relative px-4 py-3 mt-4 text-red-700 bg-red-100 border border-red-400 rounded"
           role="alert"
         >
           <strong class="font-bold">Holy smokes!</strong>
@@ -105,7 +105,7 @@
 
           <button @click="close(notification.id)" class="absolute top-0 bottom-0 right-0 px-4 py-3">
             <svg
-              class="fill-current h-6 w-6 text-red-500"
+              class="w-6 h-6 text-red-500 fill-current"
               role="button"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -120,17 +120,17 @@
       </notification>
     </notificationGroup>
     <notificationGroup group="foo">
-      <div class="fixed inset-0 flex px-4 py-6 pointer-events-none p-6 items-start justify-end">
-        <div class="max-w-sm w-full">
+      <div class="fixed inset-0 flex items-start justify-end p-6 px-4 py-6 pointer-events-none">
+        <div class="w-full max-w-sm">
           <notification v-slot="{notifications}">
             <div v-for="notification in notifications" :key="notification.id">
               <div
                 v-if="notification.type==='info'"
-                class="flex max-w-sm w-full mx-auto bg-white shadow-md rounded-lg overflow-hidden mt-4"
+                class="flex w-full max-w-sm mx-auto mt-4 overflow-hidden bg-white rounded-lg shadow-md"
               >
-                <div class="flex justify-center items-center w-12 bg-blue-500">
+                <div class="flex items-center justify-center w-12 bg-blue-500">
                   <svg
-                    class="h-6 w-6 fill-current text-white"
+                    class="w-6 h-6 text-white fill-current"
                     viewBox="0 0 40 40"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -140,20 +140,20 @@
                   </svg>
                 </div>
 
-                <div class="-mx-3 py-2 px-4">
+                <div class="px-4 py-2 -mx-3">
                   <div class="mx-3">
-                    <span class="text-blue-500 font-semibold">{{notification.title}}</span>
-                    <p class="text-gray-600 text-sm">T{{notification.text}}</p>
+                    <span class="font-semibold text-blue-500">{{notification.title}}</span>
+                    <p class="text-sm text-gray-600">T{{notification.text}}</p>
                   </div>
                 </div>
               </div>
               <div
-                class="flex max-w-sm w-full mx-auto bg-white shadow-md rounded-lg overflow-hidden mt-4"
+                class="flex w-full max-w-sm mx-auto mt-4 overflow-hidden bg-white rounded-lg shadow-md"
                 v-if="notification.type==='warning'"
               >
-                <div class="flex justify-center items-center w-12 bg-yellow-500">
+                <div class="flex items-center justify-center w-12 bg-yellow-500">
                   <svg
-                    class="h-6 w-6 fill-current text-white"
+                    class="w-6 h-6 text-white fill-current"
                     viewBox="0 0 40 40"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -163,10 +163,10 @@
                   </svg>
                 </div>
 
-                <div class="-mx-3 py-2 px-4">
+                <div class="px-4 py-2 -mx-3">
                   <div class="mx-3">
-                    <span class="text-yellow-500 font-semibold">{{notification.title}}</span>
-                    <p class="text-gray-600 text-sm">{{notification.text}}</p>
+                    <span class="font-semibold text-yellow-500">{{notification.title}}</span>
+                    <p class="text-sm text-gray-600">{{notification.text}}</p>
                   </div>
                 </div>
               </div>
@@ -177,18 +177,18 @@
     </notificationGroup>
     <notificationGroup group="bottom" position="bottom">
       <div
-        class="fixed inset-x-0 bottom-0 flex px-4 py-6 pointer-events-none p-6 items-start justify-end"
+        class="fixed inset-x-0 bottom-0 flex items-start justify-end p-6 px-4 py-6 pointer-events-none"
       >
-        <div class="max-w-sm w-full">
+        <div class="w-full max-w-sm">
           <notification v-slot="{notifications}">
             <div
-              class="flex max-w-sm w-full mx-auto bg-white shadow-md rounded-lg overflow-hidden mt-4"
+              class="flex w-full max-w-sm mx-auto mt-4 overflow-hidden bg-white rounded-lg shadow-md"
               v-for="notification in notifications"
               :key="notification.id"
             >
-              <div class="flex justify-center items-center w-12 bg-red-500">
+              <div class="flex items-center justify-center w-12 bg-red-500">
                 <svg
-                  class="h-6 w-6 fill-current text-white"
+                  class="w-6 h-6 text-white fill-current"
                   viewBox="0 0 40 40"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -198,10 +198,10 @@
                 </svg>
               </div>
 
-              <div class="-mx-3 py-2 px-4">
+              <div class="px-4 py-2 -mx-3">
                 <div class="mx-3">
-                  <span class="text-red-500 font-semibold">{{notification.title}}</span>
-                  <p class="text-gray-600 text-sm">{{notification.text}}</p>
+                  <span class="font-semibold text-red-500">{{notification.title}}</span>
+                  <p class="text-sm text-gray-600">{{notification.text}}</p>
                 </div>
               </div>
             </div>
@@ -219,16 +219,16 @@
       @change-page="onNewPage"
     >
       <div
-        class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6"
+        class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6"
       >
-        <div class="flex-1 flex justify-between sm:hidden">
+        <div class="flex justify-between flex-1 sm:hidden">
           <a
             href="#"
-            class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
+            class="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700"
           >Previous</a>
           <a
             href="#"
-            class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
+            class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700"
           >Next</a>
         </div>
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
@@ -248,10 +248,10 @@
               <a
                 href="#"
                 @click="prevPage"
-                class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
+                class="relative inline-flex items-center px-2 py-2 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-l-md hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500"
                 aria-label="Previous"
               >
-                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                   <path
                     fill-rule="evenodd"
                     d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
@@ -261,7 +261,7 @@
               </a>
               <span
                 v-show="isEllipsis.start"
-                class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700"
+                class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 text-gray-700 bg-white border border-gray-300"
               >...</span>
               <!-- <a
                 v-for="page in pages"
@@ -269,27 +269,27 @@
                 href="#"
                 @click="onSelectPage(page)"
                 :class="isActivePage(page)?'bg-gray-100 text-gray-700 transition ease-in-out duration-150':''"
-                class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
+                class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700"
               >{{page}}</a>-->
               <SPage
                 v-for="page in pages"
                 :key="page"
                 :page="page"
                 :class="isActivePage(page)?'bg-gray-100 text-gray-700 transition ease-in-out duration-150':''"
-                class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
+                class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700"
               >{{page}}</SPage>
               <span
                 v-show="isEllipsis.end"
-                class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700"
+                class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 text-gray-700 bg-white border border-gray-300"
               >...</span>
 
               <a
                 href="#"
                 @click="nextPage"
-                class="-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"
+                class="relative inline-flex items-center px-2 py-2 -ml-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-r-md hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500"
                 aria-label="Next"
               >
-                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                   <path
                     fill-rule="evenodd"
                     d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -302,7 +302,7 @@
         </div>
       </div>
     </SPagination>
-    <div class="max-w-sm bg-white p-3 rounded-lg">
+    <div class="max-w-sm p-3 bg-white rounded-lg">
       <trend
         :data="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]"
         :gradient="['#6fa8dc', '#42b983', '#2c3e50']"
@@ -310,23 +310,23 @@
         smooth
       ></trend>
     </div>
-    <div class="max-w-lg w-full mx-auto bg-white rounded-lg mt-4">
+    <div class="w-full max-w-lg mx-auto mt-4 bg-white rounded-lg">
       <chart></chart>
     </div>
     <SLightbox>adasdsad</SLightbox>
-    <div class="max-h-screen max-w-4xl grid grid-rows-6 grid-cols-10 gap-4 overflow-hidden">
-      <div class="row-span-4 col-span-10">
+    <div class="grid max-w-4xl max-h-screen grid-cols-10 grid-rows-6 gap-4 overflow-hidden">
+      <div class="col-span-10 row-span-4">
         <!-- <img
             class="w-full"
             src="https://kitiot.antel.com.uy/kit-iot/Node_Diagram.png"
             alt="images tes"
         />-->
-        <img class="w-full object-cover" src="https://wallpaperaccess.com/full/969759.jpg" alt />
+        <img class="object-cover w-full" src="https://wallpaperaccess.com/full/969759.jpg" alt />
       </div>
       <!-- images footer -->
-      <div class="overflow-auto row-span-2 col-span-10">
+      <div class="col-span-10 row-span-2 overflow-auto">
         <div class="inline-block">
-          <div class="space-x-2 flex justify-start">
+          <div class="flex justify-start space-x-2">
             <div class="flex-1 flex-shrink-0 w-40" v-for="(img,i) in [1,2,3,]" :key="i">
               <img
                 class="object-cover w-40"
@@ -339,8 +339,8 @@
       </div>
     </div>
     <!-- <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-        <div class="space-x-2 flex flex-row">
+      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+        <div class="flex flex-row space-x-2">
           <div
             class="flex-1 flex-shrink-0 w-40"
             v-for="(img,i) in [1,2,3,4,5,6,7,8,9,10,11,12,13,14]"
@@ -355,6 +355,7 @@
         </div>
       </div>
     </div>-->
+    <SSlideShow></SSlideShow>
     <svg class="svg-shape" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366.3 106.742">
       <path
         fill="currentColor"
@@ -386,6 +387,7 @@ import { VTPage, VTPagination } from "vt-pagination";
 import axios from "axios";
 import SLightbox from "@/components/SLightbox.vue";
 import Chart from "@/components/Chart.vue";
+import SSlideShow from "@/components/SSlideShow.vue";
 //import SNotification from "@/components/SNotification.vue";
 //import SNotificationGroup from "@/components/SNotificationGroup.vue";
 //import Vue from "vue";
@@ -402,6 +404,7 @@ export default {
     SPage: VTPage,
     Chart,
     SLightbox,
+    SSlideShow,
     //SNotification,
     // SNotificationGroup,
   },
