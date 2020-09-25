@@ -1,6 +1,9 @@
 <template>
   <transition leave-active-class="duration-300">
-    <div class="fixed inset-0 bottom-0 z-20 flex justify-center px-2 pb-4" v-show="show">
+    <div
+      class="fixed inset-0 bottom-0 z-20 flex justify-center px-2 pb-4"
+      v-show="show"
+    >
       <!--
     Background overlay, show/hide based on modal state.
 

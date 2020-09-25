@@ -1,7 +1,26 @@
 <template>
-  <div class="max-w-3xl">
+  <div class="max-w-3xl overflow-hidden">
+    <div>
+      <transition
+        enter-active-class="transition duration-100 "
+        enter-class="opacity-0"
+        enter-to-class="opacity-100 "
+        leave-active-class="transition duration-100 "
+        leave-class="opacity-100 "
+        leave-to-class="opacity-0 "
+        mode="out-in"
+      >
+        <img
+          :key="imageWithHover.key"
+          :src="imageWithHover.src"
+          alt=""
+          @mouseover="imageWithHover = imageHover[1]"
+          @mouseleave="imageWithHover = imageHover[0]"
+        />
+      </transition>
+    </div>
     <SGalery
-      v-slot="{next,prev,onClickCard,transitionStyle}"
+      v-slot="{ next, prev, onClickCard, transitionStyle }"
       :cardsArray="cardsArray"
       :cardWidth="cardWidth"
     >
@@ -11,7 +30,7 @@
         <div class="inline-flex overflow-hidden" ref="SGalery">
           <button
             class="flex-shrink-0"
-            v-for="(img,i) in  cardsArray"
+            v-for="(img, i) in cardsArray"
             :key="i"
             @click="onClickCard(i)"
             :style="transitionStyle"
@@ -47,6 +66,18 @@ export default {
   },
   data() {
     return {
+      imageWithHover: {
+        src: "https://wallpaperaccess.com/full/969759.jpg",
+        key: 1,
+      },
+      imageHover: [
+        { src: "https://wallpaperaccess.com/full/969759.jpg", key: 1 },
+        {
+          src:
+            "https://cdn.pixabay.com/photo/2012/08/27/14/19/evening-55067__340.png",
+          key: 2,
+        },
+      ],
       cardsArray: [
         { src: "https://wallpaperaccess.com/full/969759.jpg" },
         {
