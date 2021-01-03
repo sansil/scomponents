@@ -4,29 +4,53 @@
       <!-- nav -->
       <div class="border-b border-gray-200">
         <STabList class="flex -mb-px">
-          <STab v-slot="{isSelected}">
+          <STab v-slot="{ isSelected }">
             <a
-              :tabindex="isSelected?'1':'0'"
+              :tabindex="isSelected ? '1' : '0'"
               role="tab"
               type="button"
               href="#tab-1"
-              :class="[isSelected?'transition duration-300 transform  ease-in-out whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-indigo-500 font-medium text-sm leading-5 text-indigo-600 focus:text-indigo-800 focus:border-indigo-700':'transition duration-300 transform  ease-in-out whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300']"
-            >Tab 1</a>
+              :class="[
+                isSelected
+                  ? 'transition duration-300 transform  ease-in-out whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-indigo-500 font-medium text-sm leading-5 text-indigo-600 focus:text-indigo-800 focus:border-indigo-700'
+                  : 'transition duration-300 transform  ease-in-out whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300',
+              ]"
+              >Tab 1</a
+            >
           </STab>
-          <STab v-slot="{isSelected}">
+          <STab v-slot="{ isSelected }">
             <a
-              :tabindex="isSelected?'1':'0'"
+              :tabindex="isSelected ? '1' : '0'"
               role="tab"
               type="button"
               href="#tab-2"
-              :class="[isSelected?'transition duration-300 transform  ease-in-out whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-indigo-500 font-medium text-sm leading-5 text-indigo-600  focus:text-indigo-800 focus:border-indigo-700':'transition duration-300 transform  ease-in-out whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300  focus:text-gray-700 focus:border-gray-300']"
-            >Tab 2</a>
+              :class="[
+                isSelected
+                  ? 'transition duration-300 transform  ease-in-out whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-indigo-500 font-medium text-sm leading-5 text-indigo-600  focus:text-indigo-800 focus:border-indigo-700'
+                  : 'transition duration-300 transform  ease-in-out whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300  focus:text-gray-700 focus:border-gray-300',
+              ]"
+              >Tab 2</a
+            >
+          </STab>
+          <STab v-slot="{ isSelected }">
+            <a
+              :tabindex="isSelected ? '1' : '0'"
+              role="tab"
+              type="button"
+              href="#tab-2"
+              :class="[
+                isSelected
+                  ? 'transition duration-300 transform  ease-in-out whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-indigo-500 font-medium text-sm leading-5 text-indigo-600  focus:text-indigo-800 focus:border-indigo-700'
+                  : 'transition duration-300 transform  ease-in-out whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300  focus:text-gray-700 focus:border-gray-300',
+              ]"
+              >Tab 3</a
+            >
           </STab>
         </STabList>
       </div>
       <!-- Panels -->
       <STabPanels class="px-4 mt-4">
-        <STabPanel v-slot="{isSelected}">
+        <STabPanel v-slot="{ isSelected }">
           <transition
             enter-active-class="duration-300 ease-out"
             enter-class="opacity-0"
@@ -43,10 +67,16 @@
           <div>Tab content</div>
           <nav>mote tab content</nav>
         </STabPanel>
+        <STabPanel>
+          <div>sansil 3</div>
+          <nav>mote tab content</nav>
+        </STabPanel>
       </STabPanels>
     </STabs>
 
-    <SButton kind="primary" as="a" href="#" @click="onClick" size="lg">Apretame</SButton>
+    <SButton kind="primary" as="a" href="#" @click="onClick" size="lg"
+      >Apretame</SButton
+    >
     <SButton kind="secondary" @click="addNoti">apretame2</SButton>
     <SButton kind="secondary" @click="demo">demo</SButton>
     <SButton kind="secondary" @click="onClickBot">Bottom</SButton>
@@ -55,7 +85,7 @@
       grup="info"
     >
       <div class="w-full max-w-sm">
-        <notification v-slot="{notifications, close}">
+        <notification v-slot="{ notifications, close }">
           <div v-for="notification in notifications" :key="notification.id">
             <div class="mt-4 bg-white rounded-lg shadow-lg pointer-events-auto">
               <div class="overflow-hidden rounded-lg shadow-xs">
@@ -64,17 +94,25 @@
                     <div class="flex justify-between flex-1 w-0">
                       <p
                         class="flex-1 w-0 text-sm font-medium leading-5 text-gray-900"
-                      >{{notification.title}} {{notification.text}}</p>
+                      >
+                        {{ notification.title }} {{ notification.text }}
+                      </p>
                       <button
                         class="flex-shrink-0 ml-3 text-sm font-medium leading-5 text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline"
-                      >Undo</button>
+                      >
+                        Undo
+                      </button>
                     </div>
                     <div class="flex flex-shrink-0 ml-4">
                       <button
                         @click="close(notification.id)"
                         class="inline-flex text-gray-400 transition duration-150 ease-in-out focus:outline-none focus:text-gray-500"
                       >
-                        <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                        <svg
+                          class="w-5 h-5"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
                           <path
                             fill-rule="evenodd"
                             d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -93,7 +131,7 @@
     </div>
     <!-- seguna noti -->
     <notificationGroup group="warn">
-      <notification v-slot="{notifications, close}">
+      <notification v-slot="{ notifications, close }">
         <div
           v-for="notification in notifications"
           :key="notification.id"
@@ -103,7 +141,10 @@
           <strong class="font-bold">Holy smokes!</strong>
           <span class="block sm:inline">Something seriously bad happened.</span>
 
-          <button @click="close(notification.id)" class="absolute top-0 bottom-0 right-0 px-4 py-3">
+          <button
+            @click="close(notification.id)"
+            class="absolute top-0 bottom-0 right-0 px-4 py-3"
+          >
             <svg
               class="w-6 h-6 text-red-500 fill-current"
               role="button"
@@ -120,12 +161,14 @@
       </notification>
     </notificationGroup>
     <notificationGroup group="foo">
-      <div class="fixed inset-0 flex items-start justify-end p-6 px-4 py-6 pointer-events-none">
+      <div
+        class="fixed inset-0 flex items-start justify-end p-6 px-4 py-6 pointer-events-none"
+      >
         <div class="w-full max-w-sm">
-          <notification v-slot="{notifications}">
+          <notification v-slot="{ notifications }">
             <div v-for="notification in notifications" :key="notification.id">
               <div
-                v-if="notification.type==='info'"
+                v-if="notification.type === 'info'"
                 class="flex w-full max-w-sm mx-auto mt-4 overflow-hidden bg-white rounded-lg shadow-md"
               >
                 <div class="flex items-center justify-center w-12 bg-blue-500">
@@ -142,16 +185,22 @@
 
                 <div class="px-4 py-2 -mx-3">
                   <div class="mx-3">
-                    <span class="font-semibold text-blue-500">{{notification.title}}</span>
-                    <p class="text-sm text-gray-600">T{{notification.text}}</p>
+                    <span class="font-semibold text-blue-500">{{
+                      notification.title
+                    }}</span>
+                    <p class="text-sm text-gray-600">
+                      T{{ notification.text }}
+                    </p>
                   </div>
                 </div>
               </div>
               <div
                 class="flex w-full max-w-sm mx-auto mt-4 overflow-hidden bg-white rounded-lg shadow-md"
-                v-if="notification.type==='warning'"
+                v-if="notification.type === 'warning'"
               >
-                <div class="flex items-center justify-center w-12 bg-yellow-500">
+                <div
+                  class="flex items-center justify-center w-12 bg-yellow-500"
+                >
                   <svg
                     class="w-6 h-6 text-white fill-current"
                     viewBox="0 0 40 40"
@@ -165,8 +214,10 @@
 
                 <div class="px-4 py-2 -mx-3">
                   <div class="mx-3">
-                    <span class="font-semibold text-yellow-500">{{notification.title}}</span>
-                    <p class="text-sm text-gray-600">{{notification.text}}</p>
+                    <span class="font-semibold text-yellow-500">{{
+                      notification.title
+                    }}</span>
+                    <p class="text-sm text-gray-600">{{ notification.text }}</p>
                   </div>
                 </div>
               </div>
@@ -180,7 +231,7 @@
         class="fixed inset-x-0 bottom-0 flex items-start justify-end p-6 px-4 py-6 pointer-events-none"
       >
         <div class="w-full max-w-sm">
-          <notification v-slot="{notifications}">
+          <notification v-slot="{ notifications }">
             <div
               class="flex w-full max-w-sm mx-auto mt-4 overflow-hidden bg-white rounded-lg shadow-md"
               v-for="notification in notifications"
@@ -200,8 +251,10 @@
 
               <div class="px-4 py-2 -mx-3">
                 <div class="mx-3">
-                  <span class="font-semibold text-red-500">{{notification.title}}</span>
-                  <p class="text-sm text-gray-600">{{notification.text}}</p>
+                  <span class="font-semibold text-red-500">{{
+                    notification.title
+                  }}</span>
+                  <p class="text-sm text-gray-600">{{ notification.text }}</p>
                 </div>
               </div>
             </div>
@@ -209,9 +262,18 @@
         </div>
       </div>
     </notificationGroup>
-    {{data}}
+    {{ data }}
     <SPagination
-      v-slot="{start,end,totalItems,nextPage,prevPage,pages,isActivePage,isEllipsis}"
+      v-slot="{
+        start,
+        end,
+        totalItems,
+        nextPage,
+        prevPage,
+        pages,
+        isActivePage,
+        isEllipsis,
+      }"
       :totalItems="121"
       :maxVisiblePages="4"
       :itemsPerPage="5"
@@ -225,21 +287,25 @@
           <a
             href="#"
             class="relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700"
-          >Previous</a>
+            >Previous</a
+          >
           <a
             href="#"
             class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700"
-          >Next</a>
+            >Next</a
+          >
         </div>
-        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+        <div
+          class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"
+        >
           <div>
             <p class="text-sm leading-5 text-gray-700">
               Showing
-              <span class="font-medium">{{start}}</span>
+              <span class="font-medium">{{ start }}</span>
               to
-              <span class="font-medium">{{end}}</span>
+              <span class="font-medium">{{ end }}</span>
               of
-              <span class="font-medium">{{totalItems}}</span>
+              <span class="font-medium">{{ totalItems }}</span>
               results
             </p>
           </div>
@@ -262,7 +328,8 @@
               <span
                 v-show="isEllipsis.start"
                 class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 text-gray-700 bg-white border border-gray-300"
-              >...</span>
+                >...</span
+              >
               <!-- <a
                 v-for="page in pages"
                 :key="page"
@@ -275,13 +342,19 @@
                 v-for="page in pages"
                 :key="page"
                 :page="page"
-                :class="isActivePage(page)?'bg-gray-100 text-gray-700 transition ease-in-out duration-150':''"
+                :class="
+                  isActivePage(page)
+                    ? 'bg-gray-100 text-gray-700 transition ease-in-out duration-150'
+                    : ''
+                "
                 class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700"
-              >{{page}}</SPage>
+                >{{ page }}</SPage
+              >
               <span
                 v-show="isEllipsis.end"
                 class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium leading-5 text-gray-700 bg-white border border-gray-300"
-              >...</span>
+                >...</span
+              >
 
               <a
                 href="#"
@@ -302,6 +375,17 @@
         </div>
       </div>
     </SPagination>
+    <s-search
+      v-model="selectedWord"
+      :options="options"
+      :filter-function="
+        (search, options) => {
+          return options.filter((option) =>
+            option.toLowerCase().startsWith(search.toLowerCase())
+          );
+        }
+      "
+    ></s-search>
     <div class="max-w-sm p-3 bg-white rounded-lg">
       <trend
         :data="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]"
@@ -314,20 +398,30 @@
       <chart></chart>
     </div>
     <SLightbox>adasdsad</SLightbox>
-    <div class="grid max-w-4xl max-h-screen grid-cols-10 grid-rows-6 gap-4 overflow-hidden">
+    <div
+      class="grid max-w-4xl max-h-screen grid-cols-10 grid-rows-6 gap-4 overflow-hidden"
+    >
       <div class="col-span-10 row-span-4">
         <!-- <img
             class="w-full"
             src="https://kitiot.antel.com.uy/kit-iot/Node_Diagram.png"
             alt="images tes"
         />-->
-        <img class="object-cover w-full" src="https://wallpaperaccess.com/full/969759.jpg" alt />
+        <img
+          class="object-cover w-full"
+          src="https://wallpaperaccess.com/full/969759.jpg"
+          alt
+        />
       </div>
       <!-- images footer -->
       <div class="col-span-10 row-span-2 overflow-auto">
         <div class="inline-block">
           <div class="flex justify-start space-x-2">
-            <div class="flex-1 flex-shrink-0 w-40" v-for="(img,i) in [1,2,3,]" :key="i">
+            <div
+              class="flex-1 flex-shrink-0 w-40"
+              v-for="(img, i) in [1, 2, 3]"
+              :key="i"
+            >
               <img
                 class="object-cover w-40"
                 src="https://kitiot.antel.com.uy/kit-iot/Node_Diagram.png"
@@ -356,7 +450,11 @@
       </div>
     </div>-->
     <SSlideShow></SSlideShow>
-    <svg class="svg-shape" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366.3 106.742">
+    <svg
+      class="svg-shape"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1366.3 106.742"
+    >
       <path
         fill="currentColor"
         d="M1366.3 40.982q-183.405 50.177-274.4 34.984c-90.992-15.193-181.984-45.58-272.975-35.419-90.993 9.78-181.984 61.058-272.976 65.806S363.967 71.218 272.976 50.612C181.983 30.387 90.991 30.387 45.495 30.387L0 26.33V0h1366.3z"
@@ -372,6 +470,7 @@
         d="M0 27.041q183.405 33.124 274.4 23.1c90.989-10.031 181.981-30.086 272.972-23.379 90.993 6.454 181.984 40.3 272.976 43.431S1002.332 47 1093.324 33.4c90.992-13.35 181.984-13.35 227.48-13.35h45.5V0H0z"
       />
     </svg>
+    <div></div>
   </div>
 </template>
 
@@ -388,6 +487,7 @@ import axios from "axios";
 import SLightbox from "@/components/SLightbox.vue";
 import Chart from "@/components/Chart.vue";
 import SSlideShow from "@/components/SSlideShow.vue";
+import SSearch from "@/components/SSearch.vue";
 //import SNotification from "@/components/SNotification.vue";
 //import SNotificationGroup from "@/components/SNotificationGroup.vue";
 //import Vue from "vue";
@@ -405,13 +505,15 @@ export default {
     Chart,
     SLightbox,
     SSlideShow,
+    SSearch,
     //SNotification,
     // SNotificationGroup,
   },
   data() {
     return {
       testShow: true,
-
+      selectedWord: null,
+      options: ["sansil", "es", "uncapo"],
       myPage: 1,
       chart: null,
       chartLine: null,
